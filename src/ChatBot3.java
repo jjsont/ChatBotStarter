@@ -42,7 +42,7 @@ public class ChatBot3
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hi, how are you feeling?";
 	}
 	
 	/**
@@ -52,16 +52,17 @@ public class ChatBot3
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
+
 	public String getResponse(String statement)
 	{
 		String response = "";
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Say something, I'm giving up on you";
 		}
-
-		else if (findKeyword(statement, "no") >= 0)
+// if one of the elements in SadEmotion exists in the user's string, the following code goes
+		else if ((findKeyword(statement,
 		{
 			response = "Why so negative?";
                 	emotion--;
