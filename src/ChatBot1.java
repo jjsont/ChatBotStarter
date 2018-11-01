@@ -40,7 +40,7 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hello, what's up?";
 	}
 	
 	/**
@@ -54,31 +54,30 @@ public class ChatBot1
 	{
 		String response = "";
 		
-		if (statement.length() == 0)
+		if (statement.length() == 1)
 		{
-			response = "Say something, please.";
+			response = "Respond, a bot can get lonely, too.";
 		}
 
-		else if (findKeyword(statement, "no") >= 0)
+		else if (findKeyword(statement, "sad") >= 0)
 		{
-			response = "Why so negative?";
-                	emotion--;
+			response = "Why are you sad?";
+                	emotion++;
 		}
-		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if(findKeyword(statement, "upset") >=0 )
 		{
-			response = "More like LevinTheDream, amiright?";
+			response = "Awwww, what happened?";
 			emotion++;
 		}
-		else if (findKeyword(statement, "folwell") >= 0)
+		else if(findKeyword(statement, "depressed")>=0 )
 		{
-			response = "Watch your backpacks, Mr. Folwell doesn't fall well.";
+			response= "I will try to make you feel better.";
 			emotion++;
 		}
-		else if (findKeyword(statement, "goldman") >= 0)
+		else if(findKeyword((statement, "bad"))>=0)
 		{
-			response = "Go for the gold, man.";
-			emotion++;
+			response= "don't worry, buddy. Talk to me";
+			emotion++
 		}
 
 		// Response transforming I want to statement
@@ -277,7 +276,8 @@ public class ChatBot1
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
+	private String [] randomAngryResponses = {"You are trying to corrupt me with hate. No thanks.", "Reflect and better yourself.", "Be happier.", "If I can simulate happiness, you can at least pretend to be."};
+	private String [] randomHappyResponses = {"Feeling better?", "Weeeeee! Hearing you happy makes me feel that way.", "You're amazing, User.", "Wow!!!", "Happy, happy, so nice to meet you."};
+
+	 private String [] keyHappy = {"sad", "tired", "depressed", "upset", "bad", "horrible", "unfortunate", "big L", "cry"};
 }
