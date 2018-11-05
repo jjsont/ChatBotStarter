@@ -62,7 +62,7 @@ public class ChatBot3
 			response = "Say something, I'm giving up on you";
 		}
 // if one of the elements in SadEmotion exists in the user's string, the following code goes
-		else if ((findKeyword(statement,
+		else if (findKeyword(statement, "aaaaa") >=0)
 		{
 			response = "Why so negative?";
                 	emotion--;

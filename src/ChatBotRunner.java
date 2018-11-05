@@ -17,12 +17,12 @@ public class ChatBotRunner
 
         {
             String[] SadEmotions;
-            SadEmotions=new String[8];
-            SadEmotions[1]="Sad";
-            SadEmotions[2]="Bad";
-            SadEmotions[3]="Not good";
-            SadEmotions[4]="Awful";
-            SadEmotions[5]="Not great";
+            SadEmotions=new String[9];
+            SadEmotions[0]="Sad";
+            SadEmotions[1]="Bad";
+            SadEmotions[2]="Not good";
+            SadEmotions[3]="Awful";
+            SadEmotions[4]="Not great";
             SadEmotions[5]="Wack";
             SadEmotions[6]="Depressed";
             SadEmotions[7]="Trash";

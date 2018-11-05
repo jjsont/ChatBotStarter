@@ -35,17 +35,17 @@ public class ChatBot1
 
 	}
 	/**
-	 * Get a default greeting 	
+	 * Get a default greeting
 	 * @return a greeting
-	 */	
+	 */
 	public String getGreeting()
 	{
-		return "Hello, what's up?";
+		return "How do you feel today?";
 	}
-	
+
 	/**
 	 * Gives a response to a user statement
-	 * 
+	 *
 	 * @param statement
 	 *            the user statement
 	 * @return a response based on the rules given
@@ -53,7 +53,7 @@ public class ChatBot1
 	public String getResponse(String statement)
 	{
 		String response = "";
-		
+
 		if (statement.length() == 1)
 		{
 			response = "Respond, a bot can get lonely, too.";
@@ -62,7 +62,7 @@ public class ChatBot1
 		else if (findKeyword(statement, "sad") >= 0)
 		{
 			response = "Why are you sad?";
-                	emotion++;
+			emotion--;
 		}
 		else if(findKeyword(statement, "upset") >=0 )
 		{
@@ -74,11 +74,17 @@ public class ChatBot1
 			response= "I will try to make you feel better.";
 			emotion++;
 		}
-		else if(findKeyword((statement, "bad"))>=0)
+		else if(findKeyword(statement, "horrible")>=0 )
 		{
-			response= "don't worry, buddy. Talk to me";
-			emotion++
+			response= "Don't worry, buddy. Talk to me";
+			emotion--;
 		}
+		else if(findKeyword(statement, "good")>=0 )
+		{
+			response= "Nice, I feel the same!";
+			emotion++;
+		}
+
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -88,17 +94,30 @@ public class ChatBot1
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
 		else
 		{
 			response = getRandomResponse();
 		}
-		
+
 		return response;
 	}
-	
+
+	private String transformIShouldStatement(String statement) {
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length() - 1);
+		if (lastChar.equals(".")) {
+			statement = statement.substring(0, statement.length() - 1);
+		}
+		int psn = findKeyword(statement, "I should", 0);
+		String restOfStatement = statement.substring(psn + 8).trim();
+		return "Why do you feel like you should" + restOfStatement + "?";
+	}
+
+
+
 	/**
-	 * Take a statement with "I want to <something>." and transform it into 
+	 * Take a statement with "I want to <something>." and transform it into
 	 * "Why do you want to <something>?"
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
@@ -107,21 +126,19 @@ public class ChatBot1
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
+		String lastChar = statement.substring(statement.length() - 1);
 		if (lastChar.equals("."))
 		{
-			statement = statement.substring(0, statement
-					.length() - 1);
+			statement = statement.substring(0, statement.length() - 1);
 		}
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "Why do you want to " + restOfStatement + "?";
 	}
 
-	
+
 	/**
-	 * Take a statement with "I want <something>." and transform it into 
+	 * Take a statement with "I want <something>." and transform it into
 	 * "Would you really be happy if you had <something>?"
 	 * @param statement the user statement, assumed to contain "I want"
 	 * @return the transformed statement
@@ -141,10 +158,10 @@ public class ChatBot1
 		String restOfStatement = statement.substring(psn + 6).trim();
 		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
-	
-	
+
+
 	/**
-	 * Take a statement with "I <something> you" and transform it into 
+	 * Take a statement with "I <something> you" and transform it into
 	 * "Why do you <something> me?"
 	 * @param statement the user statement, assumed to contain "I" followed by "you"
 	 * @return the transformed statement
@@ -160,17 +177,17 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		
+
 		int psnOfI = findKeyword (statement, "I", 0);
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
-		
+
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 		return "Why do you " + restOfStatement + " me?";
 	}
-	
 
-	
-	
+
+
+
 	/**
 	 * Search for one word in phrase. The search is not case
 	 * sensitive. This method will check that the given goal
@@ -188,7 +205,7 @@ public class ChatBot1
 	 *         statement or -1 if it's not found
 	 */
 	private int findKeyword(String statement, String goal,
-			int startPos)
+							int startPos)
 	{
 		String phrase = statement.trim().toLowerCase();
 		goal = goal.toLowerCase();
@@ -219,9 +236,9 @@ public class ChatBot1
 			// found the word
 			if (((before.compareTo("a") < 0) || (before
 					.compareTo("z") > 0)) // before is not a
-											// letter
+					// letter
 					&& ((after.compareTo("a") < 0) || (after
-							.compareTo("z") > 0)))
+					.compareTo("z") > 0)))
 			{
 				return psn;
 			}
@@ -234,11 +251,11 @@ public class ChatBot1
 
 		return -1;
 	}
-	
+
 	/**
 	 * Search for one word in phrase.  The search is not case sensitive.
 	 * This method will check that the given goal is not a substring of a longer string
-	 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.  
+	 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.
 	 * @param statement the string to search
 	 * @param goal the string to search for
 	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
@@ -247,7 +264,7 @@ public class ChatBot1
 	{
 		return findKeyword (statement, goal, 0);
 	}
-	
+
 
 
 	/**
@@ -258,26 +275,24 @@ public class ChatBot1
 	{
 		Random r = new Random ();
 		if (emotion == 0)
-		{	
+		{
 			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 		}
 		if (emotion < 0)
-		{	
+		{
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-		}	
+		}
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
-	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
-	};
-	private String [] randomAngryResponses = {"You are trying to corrupt me with hate. No thanks.", "Reflect and better yourself.", "Be happier.", "If I can simulate happiness, you can at least pretend to be."};
-	private String [] randomHappyResponses = {"Feeling better?", "Weeeeee! Hearing you happy makes me feel that way.", "You're amazing, User.", "Wow!!!", "Happy, happy, so nice to meet you."};
 
-	 private String [] keyHappy = {"sad", "tired", "depressed", "upset", "bad", "horrible", "unfortunate", "big L", "cry"};
+	private String [] randomNeutralResponses = {"Pardon, can you elaborate? ",
+			"SYSTEM LOADING THINKING.exe",
+			"Deep down, can you safely say that you believe this?",
+			"Hey, it be like that sometime",
+			"It's all boolean to me.",
+			"So, how about doing something else? Binge watching a show never fails",
+			"Could you say that again? My program isn't complicated enough to get that"
+	};
+	private String [] randomAngryResponses = {"It's hard for me to relate, but I'm trying.", "Reflect and better yourself.", "Be happier.", "If I can simulate happiness, you can at least pretend to be."};
+	private String [] randomHappyResponses = {"Feeling better?", "Weeeeee! Hearing you happy makes me feel that way.", "You're amazing, User.", "Wow!!!", "Happy, happy, positive emotions!"};
 }
