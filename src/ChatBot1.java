@@ -95,13 +95,17 @@ public class ChatBot1
 		{
 			response = transformIWantStatement(statement);
 		}
+		else if(findKeyword(statement, "I should", 0) >= 0)
+		{
+		response = transformIShouldStatement(statement);
+	}
 		else
 		{
 			response = getRandomResponse();
 		}
-
 		return response;
 	}
+
 
 	private String transformIShouldStatement(String statement) {
 		statement = statement.trim();
@@ -111,7 +115,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword(statement, "I should", 0);
 		String restOfStatement = statement.substring(psn + 8).trim();
-		return "Why do you feel like you should" + restOfStatement + "?";
+		return "Why do you feel like you should " + restOfStatement + "?";
 	}
 
 
@@ -286,7 +290,7 @@ public class ChatBot1
 	}
 
 	private String [] randomNeutralResponses = {"Pardon, can you elaborate? ",
-			"SYSTEM LOADING THINKING.exe",
+			"SYSTEM LOADING THINKING.exe...Please repeat",
 			"Deep down, can you safely say that you believe this?",
 			"Hey, it be like that sometime",
 			"It's all boolean to me.",
@@ -294,5 +298,5 @@ public class ChatBot1
 			"Could you say that again? My program isn't complicated enough to get that"
 	};
 	private String [] randomAngryResponses = {"It's hard for me to relate, but I'm trying.", "Reflect and better yourself.", "Be happier.", "If I can simulate happiness, you can at least pretend to be."};
-	private String [] randomHappyResponses = {"Feeling better?", "Weeeeee! Hearing you happy makes me feel that way.", "You're amazing, User.", "Wow!!!", "Happy, happy, positive emotions!"};
+	private String [] randomHappyResponses = {"Feeling better?", "Weeeeee! Hearing you happy makes me feel that way.", "You're amazing, User.", "Wow!!!", "Cheer up!", ":)", "Alright!"};
 }
