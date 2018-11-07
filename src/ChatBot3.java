@@ -62,24 +62,24 @@ public class ChatBot3
 			response = "Say something, I'm giving up on you";
 		}
 // if one of the elements in SadEmotion exists in the user's string, the following code goes
-		else if (findKeyword(statement, "aaaaa") >=0)
+		else if (findKeyword(statement, SadEmotions, 0) >=0)
 		{
 			response = "Why so negative?";
-                	emotion--;
+
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, HappyEmotions, 0) >= 0)
 		{
 			response = "More like LevinTheDream amiright?";
-			emotion++;
+
 		}
 
 		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
+		else if (findKeyword(statement, NeutralEmotions, 0) >= 0)
 		{
-			response = transformIWantToStatement(statement);
+			response = transformIWantStatement(statement);
 		}
-		else if (findKeyword(statement, "I want",0) >= 0)
+		else if (findKeyword(statement, "I want to",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
 		}	
@@ -97,7 +97,7 @@ public class ChatBot3
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
 	 */
-	private String transformIWantToStatement(String statement)
+	private String transformIFeelStatement(String statement)
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
@@ -108,9 +108,9 @@ public class ChatBot3
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I want to", 0);
-		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		int psn = findKeyword (statement, "I feel", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		return "Why do you feel " + restOfStatement + "?";
 	}
 
 	
@@ -270,7 +270,7 @@ public class ChatBot3
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"I don't know how you feel.", "OOF", "Darn", "That's tough", "I'm sure you're not alone", "Good luck with that"};
+	private String [] randomHappyResponses = {"Good for you", "Nice", "Cool", "Okay", };
 	
 }
