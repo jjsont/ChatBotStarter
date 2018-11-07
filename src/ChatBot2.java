@@ -60,27 +60,50 @@ public class ChatBot2
 			response = "Say something, please.";
 		}
 
-		else if (findKeyword(statement, "no") >= 0)
+		else if (findKeyword(statement, "no") <= 0)
 		{
 			response = "Why so negative?";
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "am upset") <= 0)
 		{
-			response = "More like LevinTheDream amiright?";
-			emotion++;
+			response = "Being upset is a part of life and nothing can change it.  You need to go through the pain:(";
+			emotion--;
+		}
+		else if (findKeyword(statement, "failure") <= 0)
+		{
+			response = "Sometimes you just have to accept failure. You can't change it.";
+			emotion--;
+		}
+		else if (findKeyword(statement, "feel sad") <= 0)
+		{
+			response = "I'm pretty sad too. I don't know how to help you:(";
+			emotion--;
+		}
+		else if (findKeyword(statement, "why") <= 0)
+		{
+			response = "Because I have no life and here I am talking to a sad person!";
+			emotion--;
+		}
+		else if (findKeyword(statement, "feel good") <= 0)
+		{
+			response = "But good is not in my dictionary.  I am all about sadness:(";
+			emotion--;
 		}
 
 		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
+		else if (findKeyword(statement, "I want to", 0) <= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
-		else if (findKeyword(statement, "I want",0) >= 0)
+		else if (findKeyword(statement, "I want",0) <= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+        else if (findKeyword(statement, "I am",0) >= 0) {
+            response = transformIAmStatement(statement);
+        }
 		else
 		{
 			response = getRandomResponse();
@@ -108,7 +131,16 @@ public class ChatBot2
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "Why do you want " + restOfStatement + "?";
 	}
-
+    private String transformIAmStatement(String statement) {
+        statement = statement.trim();
+        String lastChar = statement.substring(statement.length() - 1);
+        if (lastChar.equals(".")) {
+            statement = statement.substring(0, statement.length() - 1);
+        }
+        int psn = findKeyword(statement, "I am", 0);
+        String restOfStatement = statement.substring(psn + 4).trim();
+        return "Why are you " + restOfStatement + "?";
+    }
 	
 	/**
 	 * Take a statement with "I want <something>." and transform it into 
@@ -262,11 +294,11 @@ public class ChatBot2
 			"Hmmm.",
 			"Do you really think so?",
 			"You don't say.",
-			"It's all boolean to me.",
+			"I'm not sure about this",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"I really can't help you anymore", "Excuse me, no!", "The rage consumes me!", "You make me mad!"};
+	private String [] randomHappyResponses = {"Don't worry you got this!", "Today is a good day", "You are like a bright ray of sunshine:)"};
 	
 }
