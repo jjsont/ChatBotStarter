@@ -59,27 +59,27 @@ public class ChatBot1
 			response = "Respond, a bot can get lonely, too.";
 		}
 
-		else if (findKeyword(statement, "sad") >= 0)
+		else if (findKeyword(statement, "feel sad") >= 0)
 		{
 			response = "Why are you sad?";
 			emotion--;
 		}
-		else if(findKeyword(statement, "upset") >=0 )
+		else if(findKeyword(statement, "feel upset") >=0 )
 		{
 			response = "Awwww, what happened?";
-			emotion++;
+			emotion--;
 		}
-		else if(findKeyword(statement, "depressed")>=0 )
+		else if(findKeyword(statement, "feel depressed")>=0 )
 		{
 			response= "I will try to make you feel better.";
-			emotion++;
+			emotion--;
 		}
-		else if(findKeyword(statement, "horrible")>=0 )
+		else if(findKeyword(statement, "feel horrible")>=0 )
 		{
 			response= "Don't worry, buddy. Talk to me";
 			emotion--;
 		}
-		else if(findKeyword(statement, "good")>=0 )
+		else if(findKeyword(statement, "feel good")>=0 )
 		{
 			response= "Nice, I feel the same!";
 			emotion++;
@@ -293,10 +293,10 @@ public class ChatBot1
 			"SYSTEM LOADING THINKING.exe...Please repeat",
 			"Deep down, can you safely say that you believe this?",
 			"Hey, it be like that sometime",
-			"It's all boolean to me.",
+			"I wish my programmer coded me so I could respond to that",
 			"So, how about doing something else? Binge watching a show never fails",
 			"Could you say that again? My program isn't complicated enough to get that"
 	};
-	private String [] randomAngryResponses = {"It's hard for me to relate, but I'm trying.", "Reflect and better yourself.", "Be happier.", "If I can simulate happiness, you can at least pretend to be."};
+	private String [] randomAngryResponses = {"It's hard for me to relate, but I'm trying. I think you could take a break from everything. Go to sleep?", "Take a deep breath...now how do you feel?","Look, it gets better from here"};
 	private String [] randomHappyResponses = {"Feeling better?", "Weeeeee! Hearing you happy makes me feel that way.", "You're amazing, User.", "Wow!!!", "Cheer up!", ":)", "Alright!"};
 }
