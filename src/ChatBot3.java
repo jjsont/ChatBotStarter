@@ -12,6 +12,42 @@ public class ChatBot3
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 
+	private String[] SadEmotions;
+		{
+			SadEmotions=new String[8];
+			SadEmotions[0]="Sad";
+			SadEmotions[1]="Bad";
+			SadEmotions[2]="Not good";
+			SadEmotions[3]="Wack";
+			SadEmotions[4]="Depressed";
+			SadEmotions[5]="Trash";
+			SadEmotions[6]="Stressed";
+			SadEmotions[7]="Awful";
+
+		}
+		private String[] HappyEmotions;{
+			HappyEmotions=new String[6];
+			HappyEmotions[0]="Happy";
+			HappyEmotions[1]="Good";
+			HappyEmotions[2]="Great";
+			HappyEmotions[3]="Awesome";
+			HappyEmotions[4]="Fantastic";
+			HappyEmotions[5]="Well";
+		}
+
+			private String[] MediumEmotions; {
+			MediumEmotions=new String[7];
+			MediumEmotions[0]="Ok";
+			MediumEmotions[1]="Okay";
+			MediumEmotions[2]="Not bad";
+			MediumEmotions[3]="Eh";
+			MediumEmotions[4]="So-so";
+			MediumEmotions[5]="Mediocre";
+			MediumEmotions[6]="Not great";
+
+		}
+
+
 
 
 	/**
@@ -52,41 +88,47 @@ public class ChatBot3
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
+	private String [] randomSadResponses = {"I don't know how you feel.", "OOF", "Darn", "That's tough", "I'm sure you're not alone", "Good luck with that"}
 
 	public String getResponse(String statement)
 	{
 		String response = "";
+		for(int x=0; x<SadEmotions.length; x++)
 		
-		if (statement.length() == 0)
+		if (findKeyword(statement,SadEmotions[x])>=0)
 		{
-			response = "Say something, I'm giving up on you";
-		}
-// if one of the elements in SadEmotion exists in the user's string, the following code goes
-		else if (findKeyword(statement, SadEmotions, 0) >=0)
-		{
-			response = "Why so negative?";
+			emotion--;
+			response = randomSadResponses[Math.random()*randomSadResponses.length()];
 
 		}
-		
-		else if (findKeyword(statement, HappyEmotions, 0) >= 0)
+// if one of the elements in SadEmotion exists in the user's string, the following code goes
+
+		(findKeyword(statement,
 		{
 			response = "More like LevinTheDream amiright?";
 
 		}
 
 		// Response transforming I want to statement
-		else if (findKeyword(statement, NeutralEmotions, 0) >= 0)
-		{
-			response = transformIWantStatement(statement);
-		}
-		else if (findKeyword(statement, "I want to",0) >= 0)
-		{
-			response = transformIWantStatement(statement);
-		}	
+
 		else
 		{
-			response = getRandomResponse();
-		}
+
+			for (int x=0; x<SadEmotions.length; x++)
+			{
+				if(findKeyword(statement,MediumEmotions)>=0)
+				{
+					response = transformIWantStatement(statement);
+				}
+				else if (findKeyword(statement, "I want to",0) >= 0)
+				{
+					response = transformIWantStatement(statement);
+				}
+				else
+				{
+					response = getRandomResponse();
+				}
+			}
 		
 		return response;
 	}
@@ -270,7 +312,8 @@ public class ChatBot3
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"I don't know how you feel.", "OOF", "Darn", "That's tough", "I'm sure you're not alone", "Good luck with that"};
+
+	private String [] randomAngryResponses = {"ok", "cool"};
 	private String [] randomHappyResponses = {"Good for you", "Nice", "Cool", "Okay", };
-	
+
 }
