@@ -293,12 +293,12 @@ public class ChatBot2
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Hmmm.",
 			"Do you really think so?",
-			"You don't say.",
+			"Why don't you say something.",
 			"I'm not sure about this",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"I really can't help you anymore", "Excuse me, no!", "The rage consumes me!", "You make me mad!"};
+	private String [] randomAngryResponses = {"I really can't help you anymore", "Excuse me, no!", "The rage consumes me!", "You make me mad!","I don't understand.","You make my head hurt!"};
 	private String [] randomHappyResponses = {"Don't worry you got this!", "Today is a good day", "You are like a bright ray of sunshine:)"};
 	
 }
