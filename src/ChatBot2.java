@@ -293,7 +293,7 @@ public class ChatBot2
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Hmmm.",
 			"Do you really think so?",
-			"You don't say.",
+			"Why don't you say something.",
 			"I'm not sure about this",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
