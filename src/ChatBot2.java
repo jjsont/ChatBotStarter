@@ -298,7 +298,7 @@ public class ChatBot2
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"I really can't help you anymore", "Excuse me, no!", "The rage consumes me!", "You make me mad!"};
+	private String [] randomAngryResponses = {"I really can't help you anymore", "Excuse me, no!", "The rage consumes me!", "You make me mad!","I don't understand.","You make my head hurt!"};
 	private String [] randomHappyResponses = {"Don't worry you got this!", "Today is a good day", "You are like a bright ray of sunshine:)"};
 	
 }
