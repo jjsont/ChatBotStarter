@@ -84,6 +84,9 @@ public class ChatBot1
 			response= "Nice, I feel the same!";
 			emotion++;
 		}
+		if(emotion <= -3) {
+			response = "Hey, check this out! https://suicidepreventionlifeline.org/";
+		}
 
 
 		// Response transforming I want to statement
