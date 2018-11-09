@@ -12,44 +12,6 @@ public class ChatBot3
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 
-	private String[] SadEmotions;
-		{
-			SadEmotions=new String[8];
-			SadEmotions[0]="Sad";
-			SadEmotions[1]="Bad";
-			SadEmotions[2]="Not good";
-			SadEmotions[3]="Wack";
-			SadEmotions[4]="Depressed";
-			SadEmotions[5]="Trash";
-			SadEmotions[6]="Stressed";
-			SadEmotions[7]="Awful";
-
-		}
-		private String[] HappyEmotions;{
-			HappyEmotions=new String[6];
-			HappyEmotions[0]="Happy";
-			HappyEmotions[1]="Good";
-			HappyEmotions[2]="Great";
-			HappyEmotions[3]="Awesome";
-			HappyEmotions[4]="Fantastic";
-			HappyEmotions[5]="Well";
-		}
-
-			private String[] MediumEmotions; {
-			MediumEmotions=new String[7];
-			MediumEmotions[0]="Ok";
-			MediumEmotions[1]="Okay";
-			MediumEmotions[2]="Not bad";
-			MediumEmotions[3]="Eh";
-			MediumEmotions[4]="So-so";
-			MediumEmotions[5]="Mediocre";
-			MediumEmotions[6]="Not great";
-
-		}
-
-
-
-
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -88,18 +50,66 @@ public class ChatBot3
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
-	private String [] randomSadResponses = {"I don't know how you feel.", "OOF", "Darn", "That's tough", "I'm sure you're not alone", "Good luck with that"}
+
 
 	public String getResponse(String statement)
 	{
-		String response = "";
-		for(int x=0; x<SadEmotions.length; x++)
-		
-		if (findKeyword(statement,SadEmotions[x])>=0)
-		{
-			emotion--;
-			response = randomSadResponses[Math.random()*randomSadResponses.length()];
 
+			String response = "";
+
+			if (statement.length() == 1)
+			{
+				response = "Respond, a bot can get lonely, too.";
+			}
+
+			else if (findKeyword(statement, "feel sad") >= 0)
+			{
+				response = "Why are you sad?";
+				emotion--;
+			}
+			else if(findKeyword(statement, "feel upset") >=0 )
+			{
+				response = "Awwww, what happened?";
+				emotion--;
+			}
+			else if(findKeyword(statement, "feel depressed")>=0 )
+			{
+				response= "I will try to make you feel better.";
+				emotion--;
+			}
+			else if(findKeyword(statement, "feel horrible")>=0 )
+			{
+				response= "Don't worry, buddy. Talk to me";
+				emotion--;
+			}
+			else if(findKeyword(statement, "feel good")>=0 )
+			{
+				response= "Nice, I feel the same!";
+				emotion++;
+			}
+			if(emotion <= -3) {
+				response = "Hey, check this out! https://suicidepreventionlifeline.org/";
+			}
+
+
+			// Response transforming I want to statement
+			else if (findKeyword(statement, "I want to", 0) >= 0)
+			{
+				response = transformIWantToStatement(statement);
+			}
+			else if (findKeyword(statement, "I want",0) >= 0)
+			{
+				response = transformIWantStatement(statement);
+			}
+			else if(findKeyword(statement, "I should", 0) >= 0)
+			{
+				response = transformIShouldStatement(statement);
+			}
+			else
+			{
+				response = getRandomResponse();
+			}
+			return response;
 		}
 // if one of the elements in SadEmotion exists in the user's string, the following code goes
 
@@ -290,6 +300,7 @@ public class ChatBot3
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
 	 */
+
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
@@ -304,16 +315,13 @@ public class ChatBot3
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
+	private String [] randomNeutralResponses = {"Interesting, tell me more", "Hmmm.", "Oh", "You don't say.", "It's all boolean to me.",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
 
-	private String [] randomAngryResponses = {"ok", "cool"};
+
 	private String [] randomHappyResponses = {"Good for you", "Nice", "Cool", "Okay", };
+	private String [] randomAngryResponses = {"I don't know how you feel.", "OOF", "Darn", "That's tough", "I'm sure you're not alone", "Good luck with that"}
 
 }
