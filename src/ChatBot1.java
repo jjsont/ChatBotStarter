@@ -84,10 +84,6 @@ public class ChatBot1
 			response= "Nice, I feel the same!";
 			emotion++;
 		}
-		if(emotion <= -3) {
-			response = "Hey, check this out! https://suicidepreventionlifeline.org/";
-		}
-
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -107,6 +103,17 @@ public class ChatBot1
 			response = getRandomResponse();
 		}
 		return response;
+	}
+
+	public void main (String emote) {
+		String answ;
+		if(emotion <= -3) {
+			answ = "Hey, check this out! https://suicidepreventionlifeline.org/";
+		}
+		if(emotion >= 5) {
+			answ = "Your happy meter is: " + emotion +".";
+		}
+
 	}
 
 
