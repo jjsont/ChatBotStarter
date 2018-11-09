@@ -86,9 +86,9 @@ public class ChatBot2
 			response = "Because I have no life and here I am talking to a sad person!";
 			emotion--;
 		}
-		else if (findKeyword(statement, "feel good") <= 0)
+		else if (findKeyword(statement, "feel good") >= 0)
 		{
-			response = "But good is not in my dictionary.  I am all about sadness:(";
+			response = "Looks like you may not need me anymore!";
 			emotion--;
 		}
 

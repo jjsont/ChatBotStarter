@@ -11,11 +11,9 @@ public class ChatBotRunner
 	/**
 	 * Create instances of each chatbot, give it user input, and print its replies. Switch chatbot responses based on which chatbot the user is speaking too.
 	 */
-
-
-		ChatBot1 chatbot1 = new ChatBot1();
-		ChatBot2 chatbot2 = new ChatBot2();
-		ChatBot3 chatbot3 = new ChatBot3();
+	{ChatBot1 chatbot1 = new ChatBot1();
+	ChatBot2 chatbot2 = new ChatBot2();
+	ChatBot3 chatbot3 = new ChatBot3();
 
 
 		Scanner in = new Scanner (System.in);
@@ -43,4 +41,6 @@ public class ChatBotRunner
 
 
 }
+}
+
 
