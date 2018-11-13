@@ -4,12 +4,12 @@ import java.util.Scanner;
 /**
  * A program to carry on conversations with a human user.
  * This version:
- * @author Brooklyn Tech CS Department
+ * @author Harpreet Kaur
  * @version September 2018
  */
 public class ChatBot2
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
+	//emotion can alter the way our bot responds. Emotion keeps becoming negative because this bot aims to make a person feel worse than their current state.
 	int emotion = 0;
 	public static void chatLoop() {
 		Scanner x= new Scanner(System.in);
@@ -137,6 +137,12 @@ public class ChatBot2
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "Why do you want " + restOfStatement + "?";
 	}
+
+	/**
+	 *
+	 * @param statement the user inputs "I am"
+	 * @return the transformed statement
+	 */
     private String transformIAmStatement(String statement) {
         statement = statement.trim();
         String lastChar = statement.substring(statement.length() - 1);
