@@ -11,7 +11,7 @@ public class ChatBot2
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
-	public void chatLoop() {
+	public static void chatLoop() {
 		Scanner x= new Scanner(System.in);
 		System.out.println(getGreeting());
 		System.out.println((getName()));
@@ -46,7 +46,7 @@ public class ChatBot2
 	 */	
 	private static String getGreeting()
 	{
-		return "Hi, I'm SadBot, what is up?";
+		return "Hi, what is up?";
 	}
 	private static String getName() {return "What's your name?";}
 	

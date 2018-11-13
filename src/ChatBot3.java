@@ -42,10 +42,11 @@ public class ChatBot3
 	 * Get a default greeting 	
 	 * @return a greeting
 	 */	
-	public String getGreeting()
+	private static String getGreeting()
 	{
 		return "Hi I'm NeutralBot. How are you feeling?";
 	}
+	private static String getName() {return "What's your name?";}
 	
 	/**
 	 * Gives a response to a user statement
