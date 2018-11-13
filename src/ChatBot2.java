@@ -5,7 +5,7 @@ import java.util.Scanner;
  * A program to carry on conversations with a human user.
  * This version:
  * @author Harpreet Kaur
- * @version September 2018
+ * @version Nov 2018
  */
 public class ChatBot2
 {
@@ -22,7 +22,7 @@ public class ChatBot2
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
-	public static void chatLoop(String statement)
+	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());

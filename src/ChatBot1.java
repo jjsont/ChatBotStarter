@@ -4,8 +4,8 @@ import java.util.Scanner;
 /**
  * A program to carry on conversations with a human user..
  * This version:
- * @author Brooklyn Tech CS Department and Jason Tan
- * @version September 2018
+ * @author  Jason Tan
+ * @version Nov 2018
  */
 public class ChatBot1
 {
@@ -13,9 +13,13 @@ public class ChatBot1
 	int emotion = 0;
 
 	public static void chatLoop() {
-		Scanner x= new Scanner(System.in);
+		Scanner in= new Scanner(System.in);
 		System.out.println(getGreeting());
 		System.out.println((getName()));
+		String statement = in.nextLine();
+		statement = getName();
+
+
 	}
 
 	/**
