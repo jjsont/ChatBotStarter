@@ -11,13 +11,18 @@ public class ChatBot2
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
+	public void chatLoop() {
+		Scanner x= new Scanner(System.in);
+		System.out.println(getGreeting());
+		System.out.println((getName()));
+	}
 
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
-	public void chatLoop(String statement)
+	public static void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
@@ -39,10 +44,11 @@ public class ChatBot2
 	 * Get a default greeting 	
 	 * @return a greeting
 	 */	
-	public String getGreeting()
+	private static String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hi, I'm SadBot, what is up?";
 	}
+	private static String getName() {return "What's your name?";}
 	
 	/**
 	 * Gives a response to a user statement

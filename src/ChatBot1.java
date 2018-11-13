@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * A program to carry on conversations with a human user..
  * This version:
- * @author Brooklyn Tech CS Department
+ * @author Brooklyn Tech CS Department and Jason Tan
  * @version September 2018
  */
 public class ChatBot1
@@ -12,14 +12,21 @@ public class ChatBot1
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 
+	public static void chatLoop() {
+		Scanner x= new Scanner(System.in);
+		System.out.println(getGreeting());
+		System.out.println((getName()));
+	}
+
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
-	public void chatLoop(String statement)
-	{
-		Scanner in = new Scanner (System.in);
-		System.out.println (getGreeting());
+	public void chatLoop(String statement) {
+		Scanner in = new Scanner(System.in);
+		System.out.println(getGreeting());
+
+
 
 
 		while (!statement.equals("Bye"))
@@ -38,10 +45,11 @@ public class ChatBot1
 	 * Get a default greeting
 	 * @return a greeting
 	 */
-	public String getGreeting()
+	private static String getGreeting()
 	{
-		return "How do you feel today?";
+		return "Hi, I am HappyBot. How do you feel today?";
 	}
+	private static String getName() {return "What's your name?";}
 
 	/**
 	 * Gives a response to a user statement
@@ -105,6 +113,10 @@ public class ChatBot1
 		return response;
 	}
 
+	/**
+	 * specific responses based on the emotion level
+	 * @param emote the bot emotion
+	 */
 	public void main (String emote) {
 		String answ;
 		if(emotion <= -3) {
@@ -116,7 +128,12 @@ public class ChatBot1
 
 	}
 
-
+	/**
+	 * Take a statement with "I should <something>." and transform it
+	 * into "Why do you feel like you should <something>?."
+	 * @param statement the user statement, that contains "I should"
+	 * @return the transformed statement
+	 */
 	private String transformIShouldStatement(String statement) {
 		statement = statement.trim();
 		String lastChar = statement.substring(statement.length() - 1);
