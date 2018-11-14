@@ -27,11 +27,12 @@ public class ChatBotRunner {
 		String botch1 = "";
 		String botch2 = "";
 		String botch3 = "";
+		String statement = "";
 		while (botChoice == false) {
 			botSe = in.nextLine();
 			botSe = botSe.toLowerCase();
 			if (botSe.indexOf("Happy") >= 0 || botSe.indexOf("HappyBot") >= 0 || botSe.indexOf("happy bot") >= 0 || botSe.indexOf("happy") >= 0) {
-				String statement = "";
+
 				System.out.println("Hey, I'm HappyBot. Coded by Jason, designed to mimic happiness.");
 				statement = in.nextLine();
 				chatbot1.chatLoop(statement);
@@ -40,7 +41,7 @@ public class ChatBotRunner {
 				pick2 = false;
 				pick3 = false;
 			} else if (botSe.indexOf("Sad") >= 0 || botSe.indexOf("SadBot") >= 0 || botSe.indexOf("sad bot") >= 0 || botSe.indexOf("sad") >= 0) {
-				String statement = "";
+
 				System.out.println("Hey, I'm SadBot. Get ready to be sadder.");
 				statement = in.nextLine();
 				chatbot2.chatLoop(statement);
@@ -49,7 +50,7 @@ public class ChatBotRunner {
 				pick2 = true;
 				pick3 = false;
 			} else if (botSe.indexOf("neutral") >= 0 || botSe.indexOf("NeutralBot") >= 0 || botSe.indexOf("neutral bot") >= 0 || botSe.indexOf("Neutral") >= 0 || botSe.indexOf("neut") >= 0) {
-				String statement = "";
+
 				System.out.println("I'm NeutralBot. Hey.");
 				statement = in.nextLine();
 				chatbot3.chatLoop(statement);
@@ -58,7 +59,6 @@ public class ChatBotRunner {
 				pick2 = false;
 				pick3 = true;
 			} else {
-				String statement = "";
 				System.out.println("Choose a bot!");
 			}
 		}
@@ -68,26 +68,25 @@ public class ChatBotRunner {
 			botch2 = "";
 			botch3 = "";
 			while (pick1 == true) {
-				botch1.equals(chatbot1.getResponse().toLowerCase());
+				botch1.equals(chatbot1.getResponse(statement).toLowerCase());
 				if (botch1.equals("SadBot") || botch1.equals("NeutralBot")) {
 					break;
 				}
 			}
 			while (pick2 == true) {
-				botch2.equals(chatbot2.getResponse().toLowerCase());
+				botch2.equals(chatbot2.getResponse(statement).toLowerCase());
 				if (botch2.equals("HappyBot") || botch2.equals("NeutralBot")) {
 					break;
 				}
 
 			}
 			while (pick3 == true) {
-				botch3.equals(chatbot3.getResponse().toLowerCase());
+				botch3.equals(chatbot3.getResponse(statement).toLowerCase());
 				if (botch1.equals("HappyBot") || botch1.equals("SadBot")) {
 					break;
 				}
 			}
 			if (botch2.equals("HappyBot") || botch3.equals("HappyBot")) {
-				String statement = "";
 				System.out.println("Thanks for choosing me.");
 				statement = in.nextLine();
 				chatbot1.chatLoop(statement);
@@ -96,7 +95,6 @@ public class ChatBotRunner {
 				pick2 = false;
 				pick3 = false;
 			} else if (botch1.equals("SadBot") || botch3.equals("SadBot")) {
-				String statement = "";
 				System.out.println("Wow, thanks for choosing me :/.");
 				statement = in.nextLine();
 				chatbot1.chatLoop(statement);
@@ -105,7 +103,6 @@ public class ChatBotRunner {
 				pick2 = true;
 				pick3 = false;
 			} else if (botch1.equals("NeutralBot") || botch2.equals("NeutralBot")) {
-				String statement = "";
 				System.out.println("You chose me.");
 				statement = in.nextLine();
 				chatbot1.chatLoop(statement);
@@ -114,4 +111,6 @@ public class ChatBotRunner {
 				pick2 = false;
 				pick3 = true;
 			}
-		}}}
+		}
+	}
+}
