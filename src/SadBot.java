@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Harpreet Kaur
  * @version Nov 2018
  */
-public class ChatBot2
+public class SadBot
 {
 	//emotion can alter the way our bot responds. Emotion keeps becoming negative because this bot aims to make a person feel worse than their current state.
 	int emotion = 0;
