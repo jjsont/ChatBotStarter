@@ -27,7 +27,7 @@ public class ChatBotRunner {
 		String botch1 = "";
 		String botch2 = "";
 		String botch3 = "";
-		while (botChoice = false) {
+		while (botChoice == false) {
 			botSe = in.nextLine();
 			botSe = botSe.toLowerCase();
 			if (botSe.indexOf("Happy") >= 0 || botSe.indexOf("HappyBot") >= 0 || botSe.indexOf("happy bot") >= 0 || botSe.indexOf("happy") >= 0) {
@@ -62,7 +62,8 @@ public class ChatBotRunner {
 				System.out.println("Choose a bot!");
 			}
 		}
-		while (botChoice == true) {
+		while (botChoice == true)
+		{
 			botch1 = "";
 			botch2 = "";
 			botch3 = "";

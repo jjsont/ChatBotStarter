@@ -76,7 +76,7 @@ public class NeutralBot
 			}
 			else if(findKeyword(statement, "feel upset") >=0 )
 			{
-				response = "Awwww, what happened?";
+				response = "what happened?";
 				emotion--;
 			}
 			else if(findKeyword(statement, "feel depressed")>=0 )
@@ -86,7 +86,7 @@ public class NeutralBot
 			}
 			else if(findKeyword(statement, "feel horrible")>=0 )
 			{
-				response= "Don't worry, buddy. Talk to me";
+				response= "You can talk to me";
 				emotion--;
 			}
 			else if(findKeyword(statement, "feel good")>=0 )
@@ -94,7 +94,8 @@ public class NeutralBot
 				response= "Nice, I feel the same!";
 				emotion++;
 			}
-			if(emotion <= -3) {
+			if(emotion <= -3)
+			{
 				response = "Hey, check this out! https://suicidepreventionlifeline.org/";
 			}
 			// Response transforming I want to statement
@@ -113,7 +114,8 @@ public class NeutralBot
 			return response;
 		}
 
-	private String transformIWantStatement(String statement) {
+	private String transformIWantStatement(String statement)
+	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
 		String lastChar = statement.substring(statement.length() - 1);
@@ -131,8 +133,8 @@ public class NeutralBot
 
 
 	/**
-	 * Take a statement with "I want to <something>." and transform it into 
-	 * "Why do you want to <something>?"
+	 * Take a statement with "I feel <something>." and transform it into
+	 * "Why do you feel <something>?"
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
 	 */
@@ -161,7 +163,8 @@ public class NeutralBot
 	private String transformIShouldStatement(String statement) {
 		statement = statement.trim();
 		String lastChar = statement.substring(statement.length() - 1);
-		if (lastChar.equals(".")) {
+		if (lastChar.equals("."))
+		{
 			statement = statement.substring(0, statement.length() - 1);
 		}
 		int psn = findKeyword(statement, "I should", 0);
@@ -186,8 +189,7 @@ public class NeutralBot
 				.length() - 1);
 		if (lastChar.equals("."))
 		{
-			statement = statement.substring(0, statement
-					.length() - 1);
+			statement = statement.substring(0, statement.length() - 1);
 		}
 		
 		int psnOfI = findKeyword (statement, "I", 0);
